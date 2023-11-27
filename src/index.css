@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "horizon";
-  src: local("horizon"), url("./fonts/horizonn.ttf") format("truetype");
+  font-family: "Horizon";
+  src: local("Horizon"), url("./fonts/horizonn.ttf") format("truetype");
   font-style: normal;
 }
 @font-face {

@@ -1,14 +1,15 @@
 import React from "react";
-import className from "classnames";
+import classNames from "classnames";
 
 interface ILogoText {
   color: string;
   animate?: boolean;
+  className?: string;
 }
-export default function LogoText({ color, animate }: ILogoText) {
-  const classess = className("origin-center", { "animate-spin-slow": animate });
+export default function LogoText({ color, animate, className }: ILogoText) {
+  const classess = classNames("origin-center", { "animate-spin-slow": animate });
   return (
-    <svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-full" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M236.904 399.358C150.101 399.839 77.4262 327.726 77.1547 240.458C76.8744 154.663 146.597 81.5241 235.546 80.6657C322.971 79.8248 394.927 151.834 395.68 239.504C396.407 323.67 326.387 399.831 236.904 399.358ZM95.1459 239.696C95.8641 317.39 156.6 380.587 236.685 381.524C312.871 382.409 377.654 318.055 377.75 241.264C377.855 158.815 310.34 98.3766 236.755 98.5255C160.752 98.6657 95.9079 160.006 95.1459 239.696Z"
         fill={color}

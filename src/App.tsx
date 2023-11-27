@@ -1,14 +1,14 @@
-import Logo from "./components/Logo";
+import Header from "./components/Header";
 
 export default function App() {
   return (
-    <div>
-      <Logo light text animate />
-      <Logo text animate />
+    <div className="bg-gray-700 h-screen">
+      <Header />
+      {/* <Logo text animate />
       <Logo text />
       <Logo text light />
       <Logo />
-      <Logo light />
+      <Logo light /> */}
     </div>
   );
 }

@@ -1,10 +1,10 @@
-import React from "react";
 interface ILogoNoText {
   color: string;
+  className?: string;
 }
 export default function LogoNoText({ color }: ILogoNoText) {
   return (
-    <svg width="480" height="480" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className="h-full" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M239.273 455.226C121.239 455.881 22.4158 357.82 22.0466 239.154C21.6654 122.489 116.474 23.0353 237.427 21.868C356.308 20.7246 454.154 118.642 455.178 237.856C456.167 352.306 360.953 455.869 239.273 455.226ZM46.5111 238.118C47.4877 343.766 130.076 429.701 238.976 430.976C342.575 432.179 430.666 344.671 430.797 240.25C430.94 128.135 339.132 45.9514 239.071 46.1539C135.722 46.3444 47.5473 129.755 46.5111 238.118Z"
         fill={color}
