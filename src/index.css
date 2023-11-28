@@ -8,9 +8,43 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "FamilijenGrotesk";
-  src: local("FamilijenGrotesk") url("./fonts/FamiljenGrotesk-VariableFont_wght.ttf") format("truetype");
-  font-weight: 125 950;
-  font-stretch: 75% 125%;
-  font-style: oblique 0deg 20deg;
+  font-family: "FamiljenGrotesk";
+  src: local("FamiljenGrotesk"), url("./fonts/FamiljenGrotesk-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "FamiljenGrotesk";
+  src: local("FamiljenGrotesk"), url("./fonts/FamiljenGrotesk-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+
+.hero::after {
+  content: url(./images/HeroLine_Mobile_Dark.svg);
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: -16px;
+  left: -10px;
+  z-index: 1;
+}
+@media screen and (min-width: 768px) {
+  .hero::after {
+    content: url(./images/HeroLine_Desktop_Dark.svg);
+  }
+}
+.hero_image::before {
+  content: url(./images/HeroLine_Mobile.svg);
+  position: absolute;
+  display: block;
+  top: -12px;
+  left: -15px;
+}
+@media screen and (min-width: 768px) {
+  .hero_image::before {
+    content: url(./images/HeroLine_Desktop.svg);
+    left: -16px;
+    top: unset;
+  }
 }

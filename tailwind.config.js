@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       headings: ["Horizon"],
-      main: ["FamilijenGrotesk"],
+      main: ["FamiljenGrotesk"],
     },
     extend: {
       colors: {
@@ -18,6 +18,9 @@ module.exports = {
       },
       animation: {
         "spin-slow": "spin 20s linear infinite",
+      },
+      backgroundImage: {
+        shopButton: "url('./images/buttonBackground.svg')",
       },
     },
   },

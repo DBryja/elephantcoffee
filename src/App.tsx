@@ -1,14 +1,11 @@
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 
 export default function App() {
   return (
-    <div className="bg-gray-700 h-screen">
+    <div className="min-h-screen w-screen overflow-hidden">
       <Header />
-      {/* <Logo text animate />
-      <Logo text />
-      <Logo text light />
-      <Logo />
-      <Logo light /> */}
+      <Hero />
     </div>
   );
 }
