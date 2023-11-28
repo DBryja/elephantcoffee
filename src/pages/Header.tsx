@@ -1,5 +1,5 @@
-import Logo from "./Logo";
-import MenuButton from "./MenuButton";
+import Logo from "../components/Logo";
+import MenuButton from "../components/MenuButton";
 
 export default function Header() {
   return (

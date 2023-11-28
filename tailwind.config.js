@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         cOrange: {
-          100: "#FFB119",
+          100: "#FFB110",
           200: "#F19100",
           300: "#ED682B",
         },

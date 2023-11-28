@@ -20,17 +20,20 @@
   font-weight: 700;
 }
 
-.hero::after {
+.wrapper {
+  background-color: #ed682b;
+}
+.aboutUs::before {
   content: url(./images/HeroLine_Mobile_Dark.svg);
   position: absolute;
   display: block;
   width: 100%;
-  bottom: -16px;
+  top: -10px;
   left: -10px;
   z-index: 1;
 }
 @media screen and (min-width: 768px) {
-  .hero::after {
+  .aboutUs::before {
     content: url(./images/HeroLine_Desktop_Dark.svg);
   }
 }
