@@ -1,6 +1,6 @@
 export default function GalleryVertical() {
   return (
-    <div className="flex flex-col w-full">
+    <section className="flex flex-col w-full">
       <img src="./images/Gallery_Mobile_Horizontal_2.webp" alt="Elephant picking coffee beans" />
       <div className="relative h-[500px]">
         <img
@@ -15,6 +15,6 @@ export default function GalleryVertical() {
         />
       </div>
       <img src="./images/Gallery_Mobile_Horizontal_1.webp" alt="Wide view of plantation" />
-    </div>
+    </section>
   );
 }

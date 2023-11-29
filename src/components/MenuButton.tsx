@@ -1,7 +1,7 @@
 import classNames from "classnames";
 export default function MenuButton({ light }: { light?: boolean }) {
   const color = light ? "#FCE8BD" : "#2D393E";
-  const textClasses = classNames("text-4xl lg:text-6xl 2xl:text-7xl flex h-full justify-center items-end", {
+  const textClasses = classNames("text-4xl lg:text-6xl flex h-full justify-center items-end", {
     "text-cBeige": light === true,
     "text-cBlack": !light,
   });
