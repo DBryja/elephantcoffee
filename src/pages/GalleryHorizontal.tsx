@@ -1,7 +1,7 @@
 export default function GalleryHorizontal() {
   return (
-    <section className="h-[200vh] mt-16 overflow-hidden flex justify-center items-center relative">
-      <div className="__galleryAnim relative w-full max-w-[1400px] h-screen scale-[1.8]">
+    <section className="galleryHorizontal h-[100vh] mt-16 overflow-hidden flex justify-center items-center relative">
+      <div className="__galleryAnim relative w-full max-w-[1400px] h-screen scale-[2.2]">
         <img
           className="absolute -top-5 left-[38%]"
           src="./images/Gallery_Desktop_Horizontal_1.webp"
@@ -34,7 +34,6 @@ export default function GalleryHorizontal() {
           alt="Elephant picking coffee beans"
         />
       </div>
-      <div className="__galleryTrigger absolute top-1/2 h-2 w-full bg-red-500" />
     </section>
   );
 }

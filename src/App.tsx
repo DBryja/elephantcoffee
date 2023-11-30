@@ -21,6 +21,7 @@ export default function App() {
         <div className="relative mt-[100vh] bg-cOrange-300">
           <AboutUs />
           <GalleryHorizontal />
+          <div className="h-screen" />
         </div>
       ) : (
         <>

@@ -13,7 +13,7 @@ const fadeIn = () => {
       scrollTrigger: {
         trigger: char,
         start: "top 60%",
-        end: "top 0%",
+        end: "+=400",
         scrub: true,
         markers: false,
       },
@@ -22,43 +22,13 @@ const fadeIn = () => {
     });
   });
 };
-// const unlockScrollTL = (section) => {
-//   gsap.set("body", {
-//     overflow: "auto",
-//   });
-// };
-// const sectionLock = () => {
-//   const sections = document.querySelectorAll(".__sectionLock");
-//   sections.forEach((section) => {
-//     const thisTrigger = section.querySelector(".__lockTrigger");
-//     const lockScrollTL = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: thisTrigger,
-//         start: "bottom center",
-//         markers: true,
-//       },
-//     });
-
-//     lockScrollTL.set("body", {
-//       overflow: "hidden",
-
-//       onComplete: function () {
-//         setTimeout(() => {
-//           unlockScrollTL(section.id);
-//         }, 3000);
-//       },
-//     });
-//   });
-// };
 
 export default function initAnimations() {
   //fade in
   fadeIn();
 
-  // sectionLock();
-
   //gallery scale down
-  const galleryTrigger = document.querySelector(".__galleryTrigger");
+  const galleryTrigger = document.querySelector(".galleryHorizontal");
   const galleryScaledown = document.querySelector(".__galleryAnim");
   gsap.to(galleryScaledown, {
     scrollTrigger: {
