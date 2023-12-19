@@ -2,7 +2,7 @@ import Heading from "../components/Heading2";
 
 export default function AboutUs() {
   return (
-    <section className="aboutUs __sectionLock h-[200vh] w-full p-5 md:px-36 md:pt-24 lg:pt-36 lg:pl-48 xl:pl-56 relative">
+    <section className="aboutUs __sectionLock lg:h-[200vh] w-full p-5 md:px-36 md:pt-24 lg:pt-36 lg:pl-48 xl:pl-56 relative">
       <div className="relative __content top-0 lg:max-w-[1400px] lg:h-screen">
         <Heading className="xl:text-[200px]">
           Blending Passion

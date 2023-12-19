@@ -1,13 +1,17 @@
 import classNames from "classnames";
-export default function MenuButton({ light }: { light?: boolean }) {
+export default function MenuButton({ light, className }: { light?: boolean; className?: any }) {
   const color = light ? "#FCE8BD" : "#2D393E";
-  const textClasses = classNames("text-4xl lg:text-6xl flex h-full justify-center items-end", {
+  const textClasses = classNames("text-3xl lg:text-6xl flex h-full justify-center items-end", {
     "text-cBeige": light === true,
     "text-cBlack": !light,
   });
+  const boxClasses = classNames(
+    "font-headings block w-min h-min cursor-pointer relative transition-colors duration-1000 mt-5",
+    className
+  );
 
   return (
-    <div className="font-headings block w-min h-min cursor-pointer relative transition-colors duration-1000">
+    <div className={boxClasses}>
       <span className={textClasses}>MENU</span>
       <svg
         className="absolute h-full left-[75%] bottom-[45%]"

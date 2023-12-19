@@ -11,7 +11,7 @@ export default function Hero() {
           <img src="./images/Hero_Desktop.webp" alt="elephant on the plantation" />
         </picture>
       </div>
-      <div className="mt-24 relative flex gap-y-6 flex-col lg:mt-44">
+      <div className="mt-20 relative flex gap-y-6 flex-col lg:mt-44">
         <Heading>
           COFFEE THAT
           <br /> YOU REMEMBER
