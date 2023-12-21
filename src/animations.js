@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import SplitType from "split-type";
-import throttle from "lodash.throttle";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +50,7 @@ const galleryScale = (windowHeight) => {
     scaleY: 0.95,
   });
 };
-const horizontalScroll = (windowHeight) => {
+const itemSlider = (windowHeight) => {
   const trigger = document.querySelector(".__itemSliderTrigger");
   const slider = document.querySelector(".itemSlider .slider");
   gsap.to(slider, {
@@ -62,46 +62,58 @@ const horizontalScroll = (windowHeight) => {
     },
     translateX: "0%",
   });
-
-  gsap.to(".bgc", {
-    scrollTrigger: {
-      trigger: slider,
-      start: "top 70%",
-      end: "top 50%",
-      scrub: true,
-    },
-    backgroundColor: "#FCE8BD",
-  });
 };
 
-export default function initAnimations() {
-  const windowHeight = window.innerHeight;
-  //fade in
-  fadeIn(windowHeight);
-  //gallery Scaledown
-  galleryScale(windowHeight);
-  //horizontalScroll
-  horizontalScroll(windowHeight);
+export default function initAnimations(isDesktop) {
+  // >>LENIS
+  const lenis = new Lenis();
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+  // LENIS<<
 
-  //section lock
-  const sections = document.querySelectorAll(".__sectionLock");
-  sections.forEach((section) => {
-    const content = section.querySelector(".__content");
-    const sectionOffsetY = getPosition(section).y;
+  if (isDesktop) {
+    const windowHeight = window.innerHeight;
+    //fade in
+    fadeIn(windowHeight);
+    //gallery Scaledown
+    galleryScale(windowHeight);
+    //itemSlider
+    itemSlider(windowHeight);
 
-    document.addEventListener(
-      "scroll",
-      throttle(() => {
+    //section lock
+    const sections = document.querySelectorAll(".__sectionLock");
+    sections.forEach((section) => {
+      const content = section.querySelector(".__content");
+      const sectionOffsetY = getPosition(section).y;
+
+      lenis.on("scroll", () => {
         const scrollHeight = window.scrollY;
         if (
           scrollHeight > sectionOffsetY &&
           scrollHeight < sectionOffsetY + section.clientHeight - content.clientHeight
         ) {
-          // console.log(section);
           content.style.transform = `translateY(${scrollHeight - sectionOffsetY}px)`;
         }
-      }),
-      1000
-    );
+      });
+    });
+  }
+
+  gsap.to(".bgc", {
+    scrollTrigger: {
+      trigger: document.querySelector(".itemSlider .slider"),
+      start: "top 100%",
+      end: "top 50%",
+      scrub: true,
+      markers: true,
+      onUpdate: (self) => {
+        console.log(self.trigger);
+      },
+    },
+    backgroundColor: "#FCE8BD",
   });
+
+  return lenis;
 }

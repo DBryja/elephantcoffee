@@ -1,10 +1,13 @@
 import classNames from "classnames";
-export default function ShopButton({ className }: { className?: string }) {
+export default function ShopButton({ className, dark }: { className?: string; dark?: boolean }) {
   const classes = classNames(
-    `group font-main text-cBeige font-bold text-4xl flex flex-row w-min py-3 pr-8 relative md:text-6xl 2xl:text-7xl
+    `group block font-main text-cBeige font-bold text-4xl flex flex-row w-min py-3 pr-8 relative md:text-6xl 2xl:text-7xl
     before:block before:absolute before:content-[''] before:w-full before:h-full before:bg-shopButton before:bg-contain before:bg-no-repeat before:bg-right before:bottom-0`,
+    { "text-cOrange-200 before:opacity-25": dark },
     className
   );
+  const color = dark ? "#F19100" : "#FCE8BD";
+
   return (
     <a href="/shop" className={classes}>
       <svg
@@ -15,7 +18,7 @@ export default function ShopButton({ className }: { className?: string }) {
       >
         <path
           d="M29.389 27.5329H51.6629V49.8068M50.1161 29.0797L27.5329 51.6629"
-          stroke="#FCE8BD"
+          stroke={color}
           strokeWidth="12.1875"
           strokeLinecap="round"
           strokeLinejoin="round"

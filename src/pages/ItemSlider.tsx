@@ -1,36 +1,45 @@
+import React from "react";
 import Heading from "../components/Heading";
+import ShopButton from "../components/ShopButton";
 
-const items: JSX.Element[] = [
-  <picture>
-    <source media="(max-width: 768px)" srcSet="./images/coffee1@0.5x" />
-    <source media="(min-width: 769px)" srcSet="./images/coffee1.png" />
-    <img src="./images/coffee1.png" alt="Killimanjaro Majest" />
-  </picture>,
-
-  <picture>
-    <source media="(max-width: 768px)" srcSet="./images/coffee2@0.5x" />
-    <source media="(min-width: 769px)" srcSet="./images/coffee2.png" />
-    <img src="./images/coffee1.png" alt="Ngorongo Noir" />
-  </picture>,
-
-  <picture>
-    <source media="(max-width: 768px)" srcSet="./images/coffee3@0.5x" />
-    <source media="(min-width: 769px)" srcSet="./images/coffee3.png" />
-    <img src="./images/coffee1.png" alt="Serengeti Sunrise" />
-  </picture>,
+const items = [
+  {
+    sm: "./images/coffee1@05x.png",
+    lg: "./images/coffee1.png",
+    alt: "Killimanjaro Majest",
+  },
+  {
+    sm: "./images/coffee2@05x.png",
+    lg: "./images/coffee2.png",
+    alt: "Ngorongo Noir",
+  },
+  {
+    sm: "./images/coffee3@05x.png",
+    lg: "./images/coffee3.png",
+    alt: "Serengeti Sunrise",
+  },
 ];
 
-export default function ItemSlider() {
+const ItemSlider = React.forwardRef((props: any, ref: React.ForwardedRef<any>) => {
   //   const isDesktop: boolean = document.body.offsetWidth > 1023;
   return (
-    <section className="itemSlider __sectionLock h-screen lg:h-[300vh] w-full relative">
-      <div className="__content w-full h-screen flex items-center justify-center">
-        <Heading className="text-cOrange-300 scale-150">BLENDS & ROASTS</Heading>
+    <section ref={ref} className="itemSlider __sectionLock h-screen lg:h-[300vh] w-full relative">
+      <div className="__content w-full h-screen flex items-center justify-center flex-col relative">
+        <Heading className="text-cOrange-200 xl:text-[250px]">BLENDS & ROASTS</Heading>
         <div className="slider absolute left-0 right-0 translate-x-full flex justify-between px-48 ">
-          {items.map((item) => item)}
+          {items.map((item, index) => (
+            <picture key={index} className="drop-shadow-2xl">
+              <source media="(max-width: 768px)" srcSet={item.sm} />
+              <source media="(min-width: 769px)" srcSet={item.lg} />
+              <img src={item.lg} alt={item.alt} />
+            </picture>
+          ))}
         </div>
+        <ShopButton dark className="!absolute bottom-16" />
         <div className="__itemSliderTrigger absolute" />
       </div>
     </section>
   );
-}
+});
+
+export default ItemSlider;

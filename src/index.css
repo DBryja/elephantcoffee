@@ -20,9 +20,8 @@
   font-weight: 700;
 }
 
-.bgc,
-.wrapper {
-  background-color: #ed682b;
+.bgc {
+  background-color: #ed682e;
 }
 .aboutUs::before {
   content: url(./images/HeroLine_Mobile_Dark.svg);
@@ -51,4 +50,24 @@
     left: -16px;
     top: unset;
   }
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -1,10 +1,13 @@
 import classNames from "classnames";
 export default function MenuButton({ light, className }: { light?: boolean; className?: any }) {
   const color = light ? "#FCE8BD" : "#2D393E";
-  const textClasses = classNames("text-3xl lg:text-6xl flex h-full justify-center items-end", {
-    "text-cBeige": light === true,
-    "text-cBlack": !light,
-  });
+  const textClasses = classNames(
+    "text-3xl lg:text-6xl flex h-full justify-center items-end transition-color duration-700",
+    {
+      "text-cBeige": light === true,
+      "text-cBlack": !light,
+    }
+  );
   const boxClasses = classNames(
     "font-headings block w-min h-min cursor-pointer relative transition-colors duration-1000 mt-5",
     className

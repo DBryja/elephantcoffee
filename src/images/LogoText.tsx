@@ -10,7 +10,7 @@ export default function LogoText({ color, animate, className }: ILogoText) {
   const classess = classNames("origin-center", { "animate-spin-slow": animate });
   return (
     <svg
-      className="h-full [&>*]:transition-color [&>*]:duration-1000"
+      className="h-full [&>*]:transition-color [&>*]:duration-300"
       viewBox="0 0 480 480"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
