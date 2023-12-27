@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
-import initAnimations from "./animations";
+import { initAnimations, backgroundChange, headerChange } from "./animations";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,29 +19,22 @@ export default function App() {
 
   useEffect(() => {
     let lenis: Lenis | null = null;
-    if (isDesktop) lenis = initAnimations(isDesktop);
+    lenis = initAnimations(isDesktop);
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: itemSliderRef.current,
-        start: "top 80%",
-        end: "top 40%",
-        scrub: true,
-        onUpdate: (self) => {
-          const newState = self.progress === 1 ? false : true;
-          setHeaderLightMode(newState);
-        },
-      },
-    });
+    //lenis independent
+    const tl = headerChange(itemSliderRef.current, setHeaderLightMode);
+    backgroundChange();
+    //lenis independent
 
     return () => {
       if (lenis) lenis.destroy();
       tl.kill();
+      gsap.globalTimeline.clear();
     };
   }, [isDesktop]);
 
   return (
-    <div className="wrapper min-h-screen max-w-screen overflow-hidden relative bgc">
+    <div className="wrapper min-h-screen max-w-screen overflow-hidden relative bgc z-10">
       <Header isDesktop={isDesktop} light={headerLightMode} />
       <Hero />
       {isDesktop ? (

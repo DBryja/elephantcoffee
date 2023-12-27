@@ -17,6 +17,25 @@ function getPosition(element) {
 
   return { x: xPosition, y: yPosition };
 }
+const sectionLock = (lenis) => {
+  //>>section lock
+  const sections = document.querySelectorAll(".__sectionLock");
+  sections.forEach((section) => {
+    const content = section.querySelector(".__content");
+    const sectionOffsetY = getPosition(section).y;
+
+    lenis.on("scroll", () => {
+      const scrollHeight = window.scrollY;
+      if (
+        scrollHeight > sectionOffsetY &&
+        scrollHeight < sectionOffsetY + section.clientHeight - content.clientHeight
+      ) {
+        content.style.transform = `translateY(${scrollHeight - sectionOffsetY}px)`;
+      }
+    });
+  });
+  //section lock<<
+};
 const fadeIn = (windowHeight) => {
   const fadeInElements = document.querySelectorAll(".__fadeIn");
   fadeInElements.forEach((char, i) => {
@@ -64,7 +83,7 @@ const itemSlider = (windowHeight) => {
   });
 };
 
-export default function initAnimations(isDesktop) {
+export function initAnimations(isDesktop) {
   // >>LENIS
   const lenis = new Lenis();
   function raf(time) {
@@ -74,46 +93,40 @@ export default function initAnimations(isDesktop) {
   requestAnimationFrame(raf);
   // LENIS<<
 
+  const windowHeight = window.innerHeight;
   if (isDesktop) {
-    const windowHeight = window.innerHeight;
-    //fade in
+    sectionLock(lenis);
     fadeIn(windowHeight);
-    //gallery Scaledown
     galleryScale(windowHeight);
-    //itemSlider
     itemSlider(windowHeight);
-
-    //section lock
-    const sections = document.querySelectorAll(".__sectionLock");
-    sections.forEach((section) => {
-      const content = section.querySelector(".__content");
-      const sectionOffsetY = getPosition(section).y;
-
-      lenis.on("scroll", () => {
-        const scrollHeight = window.scrollY;
-        if (
-          scrollHeight > sectionOffsetY &&
-          scrollHeight < sectionOffsetY + section.clientHeight - content.clientHeight
-        ) {
-          content.style.transform = `translateY(${scrollHeight - sectionOffsetY}px)`;
-        }
-      });
-    });
   }
+  return lenis;
+}
 
+export function backgroundChange() {
   gsap.to(".bgc", {
     scrollTrigger: {
-      trigger: document.querySelector(".itemSlider .slider"),
+      trigger: document.querySelector(".itemSlider"),
       start: "top 100%",
       end: "top 50%",
       scrub: true,
-      markers: true,
-      onUpdate: (self) => {
-        console.log(self.trigger);
-      },
     },
     backgroundColor: "#FCE8BD",
   });
+}
 
-  return lenis;
+export function headerChange(trigger, setState) {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: trigger,
+      start: "top 80%",
+      end: "top 40%",
+      scrub: true,
+      onUpdate: (self) => {
+        const newState = self.progress === 1 ? false : true;
+        setState(newState);
+      },
+    },
+  });
+  return tl;
 }
