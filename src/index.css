@@ -20,6 +20,9 @@
   font-weight: 700;
 }
 
+body {
+  touch-action: none;
+}
 .bgc {
   background-color: #ed682e;
 }
@@ -28,8 +31,8 @@
   position: absolute;
   display: block;
   width: 100%;
-  top: -10px;
-  left: -10px;
+  top: -0.625rem;
+  left: -0.625rem;
   z-index: 1;
 }
 @media screen and (min-width: 768px) {
@@ -51,6 +54,27 @@
     top: unset;
   }
 }
+footer::before {
+  content: url(./images/FooterLine_Desktop.svg);
+  position: absolute;
+  display: block;
+  width: 100%;
+  top: -0.625rem;
+  left: -0.625rem;
+  z-index: 1;
+}
+
+.galleryHorizontal::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 50rem;
+  background-color: #ed682e;
+  overflow: hidden;
+}
 
 html.lenis {
   height: auto;
@@ -70,4 +94,29 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+@media screen and (min-width: 2300px) {
+  html {
+    font-size: 25px;
+  }
+  .aboutUs::before {
+    transform-origin: left;
+    transform: scaleX(1.5);
+  }
+  footer::before {
+    transform-origin: left;
+    transform: scaleX(1.5);
+  }
+}
+@media screen and (min-width: 3300px) {
+  html {
+    font-size: 35px;
+  }
+  .aboutUs::before {
+    transform: scaleX(2);
+  }
+  footer::before {
+    transform: scaleX(2);
+  }
 }

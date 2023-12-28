@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import { initAnimations, backgroundChange, headerChange } from "./animations";
 import gsap from "gsap";
@@ -10,25 +10,29 @@ import Hero from "./pages/Hero";
 import GalleryVertical from "./pages/GalleryVertical";
 import GalleryHorizontal from "./pages/GalleryHorizontal";
 import ItemSlider from "./pages/ItemSlider";
+import Footer from "./pages/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 export default function App() {
   const [headerLightMode, setHeaderLightMode] = useState(true);
-  const isDesktop = window.innerWidth > 767;
-  const itemSliderRef = useRef<any>(null);
+  const isDesktop = window.innerWidth > 1025;
 
   useEffect(() => {
     let lenis: Lenis | null = null;
     lenis = initAnimations(isDesktop);
 
     //lenis independent
-    const tl = headerChange(itemSliderRef.current, setHeaderLightMode);
+    const tl = headerChange(isDesktop ? ".itemSlider" : ".__fadeIn", setHeaderLightMode);
     backgroundChange();
+
+    const inverseStateSetter = (newState: boolean) => setHeaderLightMode(!newState);
+    const tl2 = headerChange("footer", inverseStateSetter, "top 25%", "top 26%");
     //lenis independent
 
     return () => {
       if (lenis) lenis.destroy();
       tl.kill();
+      tl2.kill();
       gsap.globalTimeline.clear();
     };
   }, [isDesktop]);
@@ -41,15 +45,15 @@ export default function App() {
         <div className="relative mt-[100vh] bgc">
           <AboutUs />
           <GalleryHorizontal />
-          <ItemSlider ref={itemSliderRef} />
-          <div className="h-screen w-full bg-cyan-900" />
+          <ItemSlider isDesktop={isDesktop} />
+          <Footer />
         </div>
       ) : (
         <>
           <AboutUs />
           <GalleryVertical />
-          <ItemSlider ref={itemSliderRef} />
-          <div className="h-screen w-full bg-cyan-900" />
+          <ItemSlider isDesktop={isDesktop} />
+          <Footer />
         </>
       )}
     </div>

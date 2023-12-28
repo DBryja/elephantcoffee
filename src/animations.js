@@ -55,6 +55,7 @@ const fadeIn = (windowHeight) => {
   });
 };
 const galleryScale = (windowHeight) => {
+  const multiplier = window.innerWidth / 2000;
   const galleryTrigger = document.querySelector(".__galleryTrigger");
   const galleryScaledown = document.querySelector(".__galleryAnim");
   gsap.to(galleryScaledown, {
@@ -65,8 +66,8 @@ const galleryScale = (windowHeight) => {
       scrub: true,
       // markers: true,
     },
-    scaleX: 0.95,
-    scaleY: 0.95,
+    scaleX: multiplier,
+    scaleY: multiplier,
   });
 };
 const itemSlider = (windowHeight) => {
@@ -115,12 +116,12 @@ export function backgroundChange() {
   });
 }
 
-export function headerChange(trigger, setState) {
+export function headerChange(trigger, setState, start, end) {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: trigger,
-      start: "top 80%",
-      end: "top 40%",
+      start: start ? start : "top 80%",
+      end: end ? end : "top 70%",
       scrub: true,
       onUpdate: (self) => {
         const newState = self.progress === 1 ? false : true;

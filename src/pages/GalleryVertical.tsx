@@ -1,8 +1,12 @@
 export default function GalleryVertical() {
   return (
     <section className="flex flex-col w-full">
-      <img src="./images/Gallery_Mobile_Horizontal_2.webp" alt="Elephant picking coffee beans" />
-      <div className="relative h-[500px]">
+      <img
+        src="./images/Gallery_Mobile_Horizontal_2.webp"
+        alt="Elephant picking coffee beans"
+        className="max-w-[500px] w-full self-start"
+      />
+      <div className="relative h-[500px] md:h-[100px]">
         <img
           className="absolute left-3 top-8"
           src="./images/Gallery_Mobile_Vertical_1.webp"
@@ -14,7 +18,11 @@ export default function GalleryVertical() {
           alt="Hand picking coffee beans off the tree"
         />
       </div>
-      <img src="./images/Gallery_Mobile_Horizontal_1.webp" alt="Wide view of plantation" />
+      <img
+        src="./images/Gallery_Mobile_Horizontal_1.webp"
+        alt="Wide view of plantation"
+        className="max-w-[500px] w-full self-end"
+      />
     </section>
   );
 }

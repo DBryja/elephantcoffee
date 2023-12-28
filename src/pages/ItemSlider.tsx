@@ -4,7 +4,6 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import Heading from "../components/Heading";
 import ShopButton from "../components/ShopButton";
-import { wrap } from "module";
 
 gsap.registerPlugin(ScrollTrigger);
 const items = [
@@ -25,8 +24,7 @@ const items = [
   },
 ];
 
-const ItemSlider = React.forwardRef((props: any, ref: React.ForwardedRef<any>) => {
-  const isDesktop = window.innerWidth > 767;
+export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
   // useEffect(() => {
   //   if (!isDekstop) {
   //     const slider = document.querySelector(".itemSlider .slider");
@@ -97,12 +95,12 @@ const ItemSlider = React.forwardRef((props: any, ref: React.ForwardedRef<any>) =
   }, [isDesktop]);
 
   return (
-    <section ref={ref} className="itemSlider __sectionLock h-[300vh] w-full relative bg-cBeige overflow-y-hidden">
-      <div className="__content w-full h-screen flex flex-row items-center justify-center absolute top-0 bottom-0 overflow-y-hidden">
-        <Heading className="text-cOrange-200 xl:text-[250px]">BLENDS & ROASTS</Heading>
-        <div className="slider absolute max-lg:translate-y-3/4 left-0 right-0 gap-12 flex flex-col justify-between items-center h-full lg:flex-row lg:gap-0 lg:translate-x-full lg:px-48">
+    <section className="itemSlider __sectionLock h-[300vh] lg:h-[400vh] w-full relative max-lg:bg-cBeige overflow-y-hidden">
+      <div className="__content w-full h-screen flex flex-row items-center justify-center absolute top-0 bottom-0 overflow-hidden">
+        <Heading className="text-cOrange-200 xl:text-[10rem]">BLENDS & ROASTS</Heading>
+        <div className="slider absolute max-lg:translate-y-3/4 left-0 right-0 gap-12 flex flex-col justify-between items-center h-full lg:flex-row lg:gap-0 lg:translate-x-full lg:px-14 xl:px-24 2xl:px-48">
           {items.map((item, index) => (
-            <picture key={index} className="drop-shadow-2xl block w-auto">
+            <picture key={index} className="drop-shadow-2xl block w-auto k2:[&>img]:w-[15rem]">
               <source media="(max-width: 768px)" srcSet={item.sm} />
               <source media="(min-width: 769px)" srcSet={item.lg} />
               <img src={item.lg} alt={item.alt} className="block" />
@@ -115,6 +113,4 @@ const ItemSlider = React.forwardRef((props: any, ref: React.ForwardedRef<any>) =
       </div>
     </section>
   );
-});
-
-export default ItemSlider;
+}

@@ -22,6 +22,11 @@ module.exports = {
       backgroundImage: {
         shopButton: "url('./images/buttonBackground.svg')",
       },
+      screens: {
+        lg: "1025px",
+        k2: "2000px",
+        k4: "3500px",
+      },
     },
   },
   plugins: [],
