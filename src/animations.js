@@ -2,41 +2,26 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import SplitType from "split-type";
 import Lenis from "@studio-freight/lenis";
-
 gsap.registerPlugin(ScrollTrigger);
 
-function getPosition(element) {
-  let xPosition = 0;
-  let yPosition = 0;
-
-  while (element) {
-    xPosition += element.offsetLeft - element.scrollLeft + element.clientLeft;
-    yPosition += element.offsetTop - element.scrollTop + element.clientTop;
-    element = element.offsetParent;
-  }
-
-  return { x: xPosition, y: yPosition };
-}
 const sectionLock = (lenis) => {
   //>>section lock
   const sections = document.querySelectorAll(".__sectionLock");
   sections.forEach((section) => {
     const content = section.querySelector(".__content");
-    const sectionOffsetY = getPosition(section).y;
-
-    lenis.on("scroll", () => {
-      const scrollHeight = window.scrollY;
-      if (
-        scrollHeight > sectionOffsetY &&
-        scrollHeight < sectionOffsetY + section.clientHeight - content.clientHeight
-      ) {
-        content.style.transform = `translateY(${scrollHeight - sectionOffsetY}px)`;
-      }
+    gsap.to(section, {
+      scrollTrigger: {
+        trigger: content,
+        start: "center center",
+        end: `+=100%`,
+        pin: content,
+        scrub: true,
+      },
     });
   });
   //section lock<<
 };
-const fadeIn = (windowHeight) => {
+const fadeIn = () => {
   const fadeInElements = document.querySelectorAll(".__fadeIn");
   fadeInElements.forEach((char, i) => {
     const text = new SplitType(char, { types: "chars, words" });
@@ -45,7 +30,7 @@ const fadeIn = (windowHeight) => {
       scrollTrigger: {
         trigger: char,
         start: "top 50%",
-        end: `+=${windowHeight * 0.9}`,
+        end: `+=90%`,
         scrub: true,
         markers: false,
       },
@@ -54,7 +39,7 @@ const fadeIn = (windowHeight) => {
     });
   });
 };
-const galleryScale = (windowHeight) => {
+const galleryScale = () => {
   const multiplier = window.innerWidth / 2000;
   const galleryTrigger = document.querySelector(".__galleryTrigger");
   const galleryScaledown = document.querySelector(".__galleryAnim");
@@ -62,25 +47,36 @@ const galleryScale = (windowHeight) => {
     scrollTrigger: {
       trigger: galleryTrigger,
       start: "top 50%",
-      end: `+=${windowHeight * 0.9}`,
+      end: `+=90%`,
       scrub: true,
-      // markers: true,
     },
+    top: 0,
     scaleX: multiplier,
     scaleY: multiplier,
   });
 };
-const itemSlider = (windowHeight) => {
-  const trigger = document.querySelector(".__itemSliderTrigger");
+const itemSlider = () => {
   const slider = document.querySelector(".itemSlider .slider");
   gsap.to(slider, {
     scrollTrigger: {
-      trigger: trigger,
-      start: "top 50%",
-      end: `+=${windowHeight * 1.9}`,
+      trigger: ".itemSlider",
+      start: "top top",
+      end: `+=90%`,
       scrub: true,
     },
     translateX: "0%",
+  });
+
+  gsap.to(".wrap", {
+    scrollTrigger: {
+      trigger: "footer",
+      start: "top bottom",
+      end: "top bottom",
+      scrub: true,
+      onUpdate: (self) => {
+        if (self.progress === 1) gsap.set(".itemSlider .__content", { position: "fixed", translateY: 0 });
+      },
+    },
   });
 };
 

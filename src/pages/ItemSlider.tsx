@@ -6,6 +6,7 @@ import Heading from "../components/Heading";
 import ShopButton from "../components/ShopButton";
 
 gsap.registerPlugin(ScrollTrigger);
+
 const items = [
   {
     sm: "./images/coffee1@05x.png",
@@ -59,34 +60,29 @@ export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
   // }, [isDekstop]);
   useEffect(() => {
     if (isDesktop) return;
+    ScrollTrigger.normalizeScroll(true);
     const wrapper = document.querySelector(".itemSlider .__content");
     const slider = document.querySelector(".itemSlider .slider");
 
-    gsap.to(wrapper, {
+    gsap.to(".itemSlider", {
       scrollTrigger: {
         trigger: wrapper,
-        start: `+=${window.innerHeight / 2} 50%`,
-        end: `+=${window.innerHeight * 1.9}`,
+        start: `50% 50%`,
+        end: `+=${window.innerHeight * 2.25}`,
         scrub: true,
-        onUpdate: (self) => {
-          const onEdge = self.progress === 0 || self.progress === 1;
-          gsap.set(wrapper, {
-            position: onEdge ? "absolute" : "fixed",
-            zIndex: onEdge ? "auto" : "20",
-            top: self.progress === 1 ? "unset" : 0,
-          });
-        },
+        markers: true,
+        pin: wrapper,
       },
     });
-    gsap.to(slider, {
-      scrollTrigger: {
-        trigger: wrapper,
-        start: `+=${window.innerHeight / 2} 50%`,
-        end: `+=${window.innerHeight * 1.9}`,
-        scrub: true,
-      },
-      translateY: "-50%",
-    });
+    // gsap.to(slider, {
+    //   scrollTrigger: {
+    //     trigger: wrapper,
+    //     start: `+=${window.innerHeight} 50%`,
+    //     end: `+=${window.innerHeight * 2.25}`,
+    //     scrub: true,
+    //   },
+    //   translateY: "-50%",
+    // });
 
     return () => {
       gsap.killTweensOf(wrapper);
@@ -95,8 +91,8 @@ export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
   }, [isDesktop]);
 
   return (
-    <section className="itemSlider __sectionLock h-[300vh] lg:h-[400vh] w-full relative max-lg:bg-cBeige overflow-y-hidden">
-      <div className="__content w-full h-screen flex flex-row items-center justify-center absolute top-0 bottom-0 overflow-hidden">
+    <section className="itemSlider __sectionLock h-[300vh] w-full relative max-lg:bg-cBeige overflow-y-hidden">
+      <div className="__content w-full h-screen flex flex-row items-center justify-center absolute top-0 bottom-0">
         <Heading className="text-cOrange-200 xl:text-[10rem]">BLENDS & ROASTS</Heading>
         <div className="slider absolute max-lg:translate-y-3/4 left-0 right-0 gap-12 flex flex-col justify-between items-center h-full lg:flex-row lg:gap-0 lg:translate-x-full lg:px-14 xl:px-24 2xl:px-48">
           {items.map((item, index) => (

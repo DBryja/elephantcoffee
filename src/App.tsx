@@ -42,20 +42,19 @@ export default function App() {
       <Header isDesktop={isDesktop} light={headerLightMode} />
       <Hero />
       {isDesktop ? (
-        <div className="relative mt-[100vh] bgc">
+        <div className="relative mt-[100vh] bgc flex flex-col wrap">
           <AboutUs />
           <GalleryHorizontal />
           <ItemSlider isDesktop={isDesktop} />
-          <Footer />
         </div>
       ) : (
         <>
           <AboutUs />
           <GalleryVertical />
           <ItemSlider isDesktop={isDesktop} />
-          <Footer />
         </>
       )}
+      <Footer />
     </div>
   );
 }

@@ -20,9 +20,6 @@
   font-weight: 700;
 }
 
-body {
-  touch-action: none;
-}
 .bgc {
   background-color: #ed682e;
 }

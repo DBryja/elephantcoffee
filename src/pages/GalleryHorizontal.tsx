@@ -1,8 +1,8 @@
 export default function GalleryHorizontal() {
   return (
-    <section className="galleryHorizontal __sectionLock h-[200vh] mt-16 overflow-hidden flex justify-center items-center relative k2:pb-60 k4:pb-[50rem] k2:overflow-visible">
-      <div className="__content relative w-full max-w-[1400px] h-screen max-h-[1200px]">
-        <div className="__galleryAnim relative h-full -top-1/2 origin-center scale-[2.3] k2:scale-[3]">
+    <section className="galleryHorizontal __sectionLock h-[200vh] mt-16 overflow-hidden flex justify-center items-center relative k2:pb-60 k4:pb-[50rem] lg:overflow-visible">
+      <div className="relative w-full max-w-[1400px] h-screen max-h-[1200px]">
+        <div className="__content __galleryAnim relative h-full -top-1/2 origin-center scale-[2.5] k2:scale-[3]">
           <img
             className="absolute -top-5 left-[38%]"
             src="./images/Gallery_Desktop_Horizontal_1.webp"

@@ -3,7 +3,7 @@ import Heading from "../components/Heading";
 export default function AboutUs() {
   return (
     <section className="aboutUs __sectionLock min-h-[50vh] lg:h-[200vh] w-full p-5 lg:px-36 lg:pt-36 lg:pl-48 xl:pl-56 relative z-10">
-      <div className="relative __content top-0 lg:max-w-[80rem] lg:h-screen">
+      <div className="relative __content top-0 lg:max-w-[80rem] lg:h-screen flex flex-col justify-center ">
         <Heading>
           Blending Passion
           <br /> and Purpose
