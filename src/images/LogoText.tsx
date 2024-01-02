@@ -8,7 +8,7 @@ interface ILogoText {
 }
 export default function LogoText({ color, animate, className }: ILogoText) {
   const classess = classNames("origin-center", { "animate-spin-slow": animate });
-  const boxClasses = classNames("h-full [&>*]:transition-color [&>*]:duration-300");
+  const boxClasses = classNames("h-full [&>*]:transition-color [&>*]:duration-300", className);
   if (!color) color = "#FCE8BD";
   return (
     <svg className={boxClasses} viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">

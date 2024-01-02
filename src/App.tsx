@@ -12,6 +12,7 @@ import GalleryHorizontal from "./pages/GalleryHorizontal";
 import ItemSlider from "./pages/ItemSlider";
 import Footer from "./pages/Footer";
 import Menu from "./pages/Menu";
+import { Loader } from "./pages/Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 export default function App() {
@@ -39,25 +40,28 @@ export default function App() {
   }, [isDesktop]);
 
   return (
-    <div className="wrapper min-h-screen max-w-screen overflow-hidden relative bgc z-10">
-      <Header isDesktop={isDesktop} light={headerLightMode} />
-      <Hero />
-      <Menu isDesktop={isDesktop} />
-      {isDesktop ? (
-        <div className="relative mt-[100vh] bgc flex flex-col wrap">
-          <AboutUs />
-          <GalleryHorizontal />
-          <ItemSlider isDesktop={isDesktop} />
-        </div>
-      ) : (
-        <>
-          <div id="control-height" className="h-screen w-0 absolute -z-10" />
-          <AboutUs />
-          <GalleryVertical />
-          <ItemSlider isDesktop={isDesktop} />
-        </>
-      )}
-      <Footer isDesktop={isDesktop} />
-    </div>
+    <>
+      <Loader />
+      <div className="wrapper min-h-screen max-w-screen overflow-hidden relative bgc z-10">
+        <Header isDesktop={isDesktop} light={headerLightMode} />
+        <Hero />
+        <Menu isDesktop={isDesktop} />
+        {isDesktop ? (
+          <div className="relative mt-[100vh] bgc flex flex-col wrap">
+            <AboutUs />
+            <GalleryHorizontal />
+            <ItemSlider isDesktop={isDesktop} />
+          </div>
+        ) : (
+          <>
+            <div id="control-height" className="h-screen w-0 absolute -z-10" />
+            <AboutUs />
+            <GalleryVertical />
+            <ItemSlider isDesktop={isDesktop} />
+          </>
+        )}
+        <Footer isDesktop={isDesktop} />
+      </div>
+    </>
   );
 }
