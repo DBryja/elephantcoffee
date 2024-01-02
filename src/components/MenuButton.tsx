@@ -14,7 +14,7 @@ export default function MenuButton({ light, className }: { light?: boolean; clas
   );
 
   return (
-    <div className={boxClasses}>
+    <button className={boxClasses} onClick={() => document.querySelector(".menu")?.classList.toggle("active")}>
       <span className={textClasses}>MENU</span>
       <svg
         className="absolute h-full left-[75%] bottom-[45%]"
@@ -33,6 +33,6 @@ export default function MenuButton({ light, className }: { light?: boolean; clas
           className="transition-colors duration-1000"
         />
       </svg>
-    </div>
+    </button>
   );
 }

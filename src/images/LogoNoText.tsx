@@ -1,8 +1,9 @@
 interface ILogoNoText {
-  color: string;
+  color?: string;
   className?: string;
 }
 export default function LogoNoText({ color }: ILogoNoText) {
+  if (!color) color = "#FCE8BD";
   return (
     <svg className="h-full" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

@@ -26,41 +26,10 @@ const items = [
 ];
 
 export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
-  // useEffect(() => {
-  //   if (!isDekstop) {
-  //     const slider = document.querySelector(".itemSlider .slider");
-  //     gsap.to("body", {
-  //       scrollTrigger: {
-  //         trigger: ".__itemSliderTrigger",
-  //         start: "50% 50%",
-  //         scrub: true,
-  //       },
-  //       overflowY: "hidden",
-  //     });
-  //     gsap.to(slider, {
-  //       scrollTrigger: {
-  //         trigger: ".__itemSliderTrigger",
-  //         start: "50% 50%",
-  //         scrub: true,
-  //       },
-  //       overflowY: "scroll",
-  //     });
-
-  //     slider?.addEventListener("scroll", () => {
-  //       console.log(Math.abs(slider.scrollTop));
-  //       if (slider.scrollHeight - Math.abs(slider.scrollTop) <= slider.clientHeight + 10) {
-  //         gsap.to("body", { overflowY: "scroll" });
-  //         gsap.to(slider, { overflowY: "hidden" });
-  //       } else {
-  //         gsap.to("body", { overflowY: "hidden" });
-  //         gsap.to(slider, { overflowY: "scroll" });
-  //       }
-  //     });
-  //   }
-  // }, [isDekstop]);
   useEffect(() => {
     if (isDesktop) return;
     ScrollTrigger.normalizeScroll(true);
+    ScrollTrigger.config({ ignoreMobileResize: true, autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" });
     const wrapper = document.querySelector(".itemSlider .__content");
     const slider = document.querySelector(".itemSlider .slider");
 
@@ -68,21 +37,20 @@ export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
       scrollTrigger: {
         trigger: wrapper,
         start: `50% 50%`,
-        end: `+=${window.innerHeight * 2.25}`,
-        scrub: true,
-        markers: true,
+        end: `+=100%`,
         pin: wrapper,
+        scrub: true,
       },
     });
-    // gsap.to(slider, {
-    //   scrollTrigger: {
-    //     trigger: wrapper,
-    //     start: `+=${window.innerHeight} 50%`,
-    //     end: `+=${window.innerHeight * 2.25}`,
-    //     scrub: true,
-    //   },
-    //   translateY: "-50%",
-    // });
+    gsap.to(slider, {
+      scrollTrigger: {
+        trigger: wrapper,
+        start: `50% 50%`,
+        end: `+=90%`,
+        scrub: true,
+      },
+      translateY: "-50%",
+    });
 
     return () => {
       gsap.killTweensOf(wrapper);
@@ -91,7 +59,7 @@ export default function ItemSlider({ isDesktop }: { isDesktop: boolean }) {
   }, [isDesktop]);
 
   return (
-    <section className="itemSlider __sectionLock h-[300vh] w-full relative max-lg:bg-cBeige overflow-y-hidden">
+    <section className="itemSlider __sectionLock h-[200vh] lg:h-[300vh] w-full relative max-lg:bg-cBeige overflow-y-hidden">
       <div className="__content w-full h-screen flex flex-row items-center justify-center absolute top-0 bottom-0">
         <Heading className="text-cOrange-200 xl:text-[10rem]">BLENDS & ROASTS</Heading>
         <div className="slider absolute max-lg:translate-y-3/4 left-0 right-0 gap-12 flex flex-col justify-between items-center h-full lg:flex-row lg:gap-0 lg:translate-x-full lg:px-14 xl:px-24 2xl:px-48">
