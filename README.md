@@ -4,10 +4,7 @@
   - [About the website](#about-the-website)
 - [Technical informations](#technical-informations)
   - [Built with](#built-with)
-  - [Features](#features)
-  - [Installation Guide](#installation-guide)
 - [My process](#my-process)
-  - [Step By Step](#step-by-step)
   - [Continued development](#continued-development)
 - [Author](#author)
 
