@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# Elephant Coffee - Explore the world of premium coffee blends inspired by the majestic elephants.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Overview](#overview)
+  - [About the website](#about-the-website)
+- [Technical informations](#technical-informations)
+  - [Built with](#built-with)
+  - [Features](#features)
+  - [Installation Guide](#installation-guide)
+- [My process](#my-process)
+  - [Step By Step](#step-by-step)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+### About the website
+I've written this website after being highly inspired by a https://www.cafedelmar.nl website.
+I really liked the pin effect on the sections which I tried to recreate using GSAP Scrolltrigger.
+I managed to create a logo, and redesign hero section. 
 
-### `npm start`
+## Technical informations
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Built with
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Code**:
+- React+Typescript,
+- TaiwindCSS,
+- GSAP,
 
-### `npm test`
+**Design**:
+- Figma
+- Adobe Illustrator (used to turn AI Generated png logo to SVG)
+- Adobe Photoshop (paste custom made labels onto mockups) 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Applications used**:
+- Visual Studio Code,
+- Figma, Adobe Photoshop, Adobe Illustrator,
+- Firefox Developer Edition & Google Chrome dev tools,
 
-### `npm run build`
+## My Process
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Continued Development
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+There is a lot of things to improve and rework, as I have focused on the desktop view of the website.
+  - completely rework the mobile view (really didn't like the outcome)
+  - avoid rotating pictures as they may not cover full screen, instead of that import them already in the diagonal persepctive
+  - make all animated elements based on classic class-based styling instead of the tailwind approach as classes seem to me easier to maintain using gsap
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+I also didn't add the shop which I designed from scracth including the e-mail template, as I've decided to make more advanced E-Commerce project in the future, and stay only on the client-side website.
+  
+- https://www.linkedin.com/in/dawid-bryja-898134249/
