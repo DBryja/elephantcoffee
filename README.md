@@ -45,4 +45,8 @@ There is a lot of things to improve and rework, as I have focused on the desktop
 
 I also didn't add the shop which I designed from scracth including the e-mail template, as I've decided to make more advanced E-Commerce project in the future, and stay only on the client-side website.
   
+
+## Author
+
+- https://github.com/DBryja/
 - https://www.linkedin.com/in/dawid-bryja-898134249/
