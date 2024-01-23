@@ -11,6 +11,8 @@
 ## Overview
 
 ### About the website
+Live view - [https://elephantcoffee.vercel.app](https://elephantcoffee.vercel.app)
+
 I've written this website after being highly inspired by a https://www.cafedelmar.nl website.
 I really liked the pin effect on the sections which I tried to recreate using GSAP Scrolltrigger.
 I managed to create a logo, and redesign hero section. 
